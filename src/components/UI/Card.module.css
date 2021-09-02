@@ -1,0 +1,32 @@
+.card {
+    display: flex;
+    width: 100%;
+    height: 8rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card:hover {
+    background-color: rgb(243, 243, 243);
+}
+
+.card-img {
+    display: inline-block;
+    width: 25%;
+    height: 100%;
+}
+
+.card-details {
+    width: 75%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+
+img {
+    max-width: 95%;
+    max-height: 95%;
+}
+

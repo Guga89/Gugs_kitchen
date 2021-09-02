@@ -1,0 +1,31 @@
+.navbar {
+    height: 100%;
+    width: 30%;
+    background-color: #e48826;
+    display: inline-block;
+
+}
+
+.logo{
+    width: 60%;
+    display: block;
+    margin: auto;
+    padding-top: 3rem;
+}
+
+.menu {
+    padding: 0;
+}
+.menu-item {
+    color: white;
+    text-decoration: none;
+    list-style: none;
+    text-align: center;
+    margin: auto;
+    padding: 1.5rem 0;
+}
+
+.menu-item:hover {
+    color: #e48826;
+    background-color: white;
+}

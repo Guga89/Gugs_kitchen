@@ -1,0 +1,43 @@
+.cartContainer {
+    position: absolute;
+    width: 100%;
+    max-height: 50%;
+    background-color: white;
+    z-index: 1000;
+    border-radius: 0 0 2rem 2rem ; 
+}
+.cartItems {
+    width: 100%;
+    display: block;
+    padding: .5rem;
+    box-shadow: .5rem .5rem 1rem grey;
+}
+
+.cartHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 5rem;
+    padding: 1.5rem;
+    background-color: lightgray;
+    color: rgb(90, 83, 83);
+    border-radius: 0 0 2rem 2rem ; 
+}
+
+.clearAll {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    border-style: none;
+    border-radius: 10px;
+    width: 18%;
+    height: 120%;
+    box-sizing: border-box;
+}
+
+.clearAll:hover {
+    color: white;
+    background-color: red;
+}

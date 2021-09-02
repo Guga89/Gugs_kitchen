@@ -1,0 +1,25 @@
+.card {
+    width: 28%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin: 1rem;
+    padding: .5rem;
+    box-shadow: .5rem .5rem 1rem grey;
+    border-radius: 1rem;
+    transition: transform .2s;
+}
+
+img {
+    max-width: 100%;
+}
+.card:hover {
+    transform: translateY(-1px) scale(1.07);
+}
+
+.card-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}

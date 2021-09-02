@@ -1,0 +1,7 @@
+.container {
+    display: flex;
+    width: 70%;
+    height: 97vh;
+    margin: 1rem auto;
+    box-shadow: 1rem 1rem 2.5rem grey;
+}

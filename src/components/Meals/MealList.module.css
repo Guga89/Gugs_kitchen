@@ -1,0 +1,9 @@
+.meal-list {
+    display: flex;
+    max-height: 97vh;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    overflow-y: auto;
+    overflow-x: hidden;
+}

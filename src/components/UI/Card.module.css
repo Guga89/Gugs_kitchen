@@ -30,3 +30,15 @@ img {
     max-height: 95%;
 }
 
+.cart-item-counter-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 5rem;
+}
+
+.cart-item-counter-button {
+    width: 3rem;
+    border-radius: 50%;
+}

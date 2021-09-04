@@ -5,13 +5,17 @@
     background-color: white;
     z-index: 1000;
     border-radius: 0 0 2rem 2rem ; 
+    
 }
 .cartItems {
     width: 100%;
     display: block;
     padding: .5rem;
     box-shadow: .5rem .5rem 1rem grey;
+    overflow-y: scroll;
 }
+
+
 
 .cartHeader {
     display: flex;

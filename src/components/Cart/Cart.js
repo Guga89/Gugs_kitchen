@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { CartContext } from "../../contexts/cart-context";
-import Card from "../UI/CartItem";
+import CartItem from "../UI/CartItem";
 import styles from "./Cart.module.css"
 
 const Cart = (props) => {
@@ -10,7 +10,7 @@ const Cart = (props) => {
     return (
         <div className={styles.cartContainer}>
             <div className={styles.cartItems}>
-                {cartItems.map((item) => { return <Card item={item} key={item.id} /> })}
+                {cartItems.map((item) => { return <CartItem item={item} key={item.id} /> })}
             </div>
             <div className={styles.cartHeader}>
                 <h2>Total amount - {totalAmount}$</h2>

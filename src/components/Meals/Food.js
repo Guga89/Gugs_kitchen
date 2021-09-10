@@ -7,7 +7,7 @@ const FoodItem = (props) => {
 
     const { addItem, removeItem } = useContext(CartContext)
 
-    const amountHandler = (amount) => {
+    const addItemToCart = (amount) => {
         addItem({
             id: props.id,
             name: props.name,
@@ -17,7 +17,7 @@ const FoodItem = (props) => {
         })
     }
 
-    // const removeItemFromCart = removeItem(props.id)
+    const removeItemFromCart = (id) => { removeItem(id) }
 
 
     return (
@@ -26,7 +26,7 @@ const FoodItem = (props) => {
             <div className={styles["card-details"]}>
                 <h3>{props.name}</h3>
                 <h3>{props.price}</h3>
-                <CountForm amountHandler={amountHandler} />
+                <CountForm addItemToCart={addItemToCart} removeItemFromCart={removeItemFromCart} id={props.id} />
             </div>
         </div>
     );

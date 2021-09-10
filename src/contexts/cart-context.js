@@ -8,13 +8,39 @@ const defaultCartState = { items: [], totalAmount: 0 }   //default state
 
 const cartReducer = (state, action) => {                 //reducer function
     if (action.type === 'ADD') {
-        const updatedItems = state.items.concat(action.item);
-        const updatedTotalAmount = state.totalAmount + (action.item.price * action.item.amount)
+        const updatedTotalAmount = state.totalAmount + action.item.price
+
+        const alreadyExistsIndex = state.items.findIndex(item => item.id === action.item.id)
+        const existingItem = state.items[alreadyExistsIndex]
+
+        let updatedItem;
+        let updatedItems;
+
+        if (existingItem) {
+            updatedItem = { ...existingItem, amount: existingItem.amount + 1 };
+            updatedItems = [...state.items];
+            updatedItems[alreadyExistsIndex] = updatedItem;
+        } else {
+            updatedItems = state.items.concat(action.item);
+        }
+
         return { items: updatedItems, totalAmount: updatedTotalAmount }
     }
+
     if (action.type === 'REMOVE') {
-        const updatedItems = state.items.filter((item) => { return action.id !== item.id })
-        const updatedTotalAmount = updatedItems.reduce((cur, item) => { return cur + (item.price * item.amount) }, 0)
+        let updatedItems;
+        const existingItemIndex = state.items.findIndex(item => item.id === action.id)
+        const existingItem = { ...state.items[existingItemIndex] }
+
+        const updatedTotalAmount = state.totalAmount - existingItem.price
+        if (existingItem.amount === 1) {
+            const updatedItems = state.items.filter((item) => { return action.id !== item.id })
+        } else {
+            const updatedItem = { ...existingItem, amount: existingItem.amount - 1 }
+            updatedItems = [...state.items]
+            updatedItems[existingItemIndex] = updatedItem
+        }
+
         return { items: updatedItems, totalAmount: updatedTotalAmount }
     }
     return defaultCartState
@@ -40,7 +66,7 @@ const CartContextProvider = (props) => {
         removeItem: removeItemFromCartHandler
     }
 
-    console.log(cartContextHelper)
+    // console.log(cartContextHelper)
 
     return (
         <CartContext.Provider value={cartContextHelper}>

@@ -5,26 +5,18 @@ import styles from './Card.module.css'
 const CartItem = (props) => {
     const { addItem, removeItem } = useContext(CartContext)
 
-    let amount = props.item.amount
-
     const addOne = () => {
-        amount += 1;
         addItem({
             id: props.item.id,
             name: props.item.name,
             price: props.item.price,
             img: props.item.img,
-            amount: amount
+            amount: props.item.amount + 1
         })
     }
 
     const removeOne = () => {
-        if (amount > 0) {
-            amount--;
-            removeItem(props.id)
-        } else {
-            removeItem(props.id)
-        }
+        removeItem(props.item.id)
     }
 
     return (
@@ -38,9 +30,9 @@ const CartItem = (props) => {
                     <h3>{props.item.price}</h3>
                 </div>
                 <div className={styles["cart-item-counter-container"]}>
-                    <button className={styles["cart-item-counter-button"]} onClick={removeOne.bind(null, props.item.id)}>-</button>
+                    <button className={styles["cart-item-counter-button"]} onClick={removeOne}>-</button>
                     <h3>{props.item.amount}</h3>
-                    <button className={styles["cart-item-counter-button"]} onClick={addOne.bind(null, props.item)}>+</button>
+                    <button className={styles["cart-item-counter-button"]} onClick={addOne}>+</button>
                 </div>
             </div>
         </div>

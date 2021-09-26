@@ -1,4 +1,4 @@
-import { Fragment, useContext } from 'react';
+import { Fragment, useContext, useEffect, useState } from 'react';
 import { CartContext } from '../../contexts/cart-context';
 import styles from './CartButton.module.css'
 
@@ -7,11 +7,30 @@ const CartButton = (props) => {
 
     const { items, totalAmount } = useContext(CartContext)
 
+    const [btnHighlighted, setBtnHighlighted] = useState(false)
+
+    const btnClasses = `${styles["cart-button"]} ${btnHighlighted ? styles.bump : ''}`
+
     const totalItems = items.reduce((currentAmount, item) => { return currentAmount + item.amount }, 0)
+
+    useEffect(() => {
+        if (items.length === 0) {
+            return;
+        }
+        setBtnHighlighted(true)
+
+        const timer = setTimeout(() => {
+            setBtnHighlighted(false)
+        }, 300)
+
+        return () => {
+            clearTimeout(timer)
+        }
+    }, [items])
 
     return (
         <Fragment>
-            {!props.CartIsShown && items.length > 0 && <div className={styles["cart-button"]} onClick={props.showCart} >
+            {!props.CartIsShown && items.length > 0 && <div className={btnClasses} onClick={props.showCart} >
                 <div className={styles["cart-icon"]}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" className="bi bi-basket2" viewBox="0 0 16 16">
                         <path d="M4 10a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0v-2zm3 0a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0v-2zm3 0a1 1 0 1 1 2 0v2a1 1 0 0 1-2 0v-2z" />

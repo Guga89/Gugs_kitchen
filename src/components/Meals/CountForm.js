@@ -9,7 +9,7 @@ const CountForm = (props) => {
 
     if (items.length > 0) {
         const cartItemIndex = items.findIndex(item => item.id === props.id);
-        if (cartItemIndex != undefined) {
+        if (cartItemIndex !== undefined) {
             inCartAmount = { ...items[cartItemIndex] }.amount;
         } else {
 

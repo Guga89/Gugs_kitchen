@@ -49,6 +49,12 @@ const cartReducer = (state, action) => {                 //reducer function
 
         return { items: updatedItems, totalAmount: updatedTotalAmount }
     }
+
+
+    if (action.type === 'CLEARALL') {
+        return defaultCartState
+    }
+
     return defaultCartState
 }
 
@@ -63,13 +69,17 @@ const CartContextProvider = (props) => {
     const removeItemFromCartHandler = id => {
         dispatchCartAction({ type: 'REMOVE', id: id })
     }
+    const clearAll = () => {
+        dispatchCartAction({ type: 'CLEARALL' })
+    }
 
     //================Context to be provided/shared=========================
     const cartContextHelper = {
         items: cartState.items,
         totalAmount: cartState.totalAmount,
         addItem: addItemToCartHandler,
-        removeItem: removeItemFromCartHandler
+        removeItem: removeItemFromCartHandler,
+        clearAll: clearAll
     }
 
     // console.log(cartContextHelper)

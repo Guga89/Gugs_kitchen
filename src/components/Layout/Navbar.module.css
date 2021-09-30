@@ -3,6 +3,10 @@
     width: 30%;
     background-color: #e48826;
     display: inline-block;
+	height: 98vh;
+	color: white;
+	transition: .5s;
+	overflow-x: hidden;
 
 }
 
@@ -13,19 +17,154 @@
     padding-top: 3rem;
 }
 
-.menu {
-    padding: 0;
-}
-.menu-item {
+
+/* .list {
     color: white;
     text-decoration: none;
     list-style: none;
     text-align: center;
     margin: auto;
     padding: 1.5rem 0;
+} */
+
+.navbar.active {
+	width: 70px;
 }
 
-.menu-item:hover {
-    color: #e48826;
-    background-color: white;
+.navbar ul {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding-left: 5px;
+	padding-top: 40px;
 }
+
+.navbar ul li {
+	list-style: none;
+	width: 100%;
+	position: relative;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+    transition: transform .3s
+}
+.navbar ul li:hover {
+transform: translateY(-1px) scale(1.03);
+font-weight: bold;
+border: 1px solid white;
+}
+
+
+.navbar ul li b:nth-child(1) {
+	position: absolute;
+	top: -20px;
+	height: 20px;
+	width: 100%;
+	background-color: white;
+	display: none;
+}
+.navbar ul li b:nth-child(1)::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-bottom-right-radius: 20px;
+	background-color: #e48826;
+}
+
+.navbar ul li b:nth-child(2) {
+	position: absolute;
+	bottom: -20px;
+	height: 20px;
+	width: 100%;
+	background-color: white;
+	display: none;
+}
+.navbar ul li b:nth-child(2)::before {
+	content: " ";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-top-right-radius: 20px;
+	background-color: #e48826;
+}
+
+.navbar ul li.active b:nth-child(1),
+.navbar ul li.active b:nth-child(2) {
+	display: block;
+}
+.navbar ul li.active {
+	background-color: white;
+}
+
+.navbar ul li.active a {
+	color: #e48826;
+}
+.navbar ul li a {
+	text-decoration: none;
+	color: white;
+	position: relative;
+	width: 100%;
+	display: flex;
+}
+
+.navbar ul li a .icon {
+	position: relative;
+	display: block;
+	min-width: 60px;
+	line-height: 50px;
+	text-align: center;
+	margin-top: 12px;
+}
+
+.navbar ul li a .icon {
+	font-size: 1.5rem;
+}
+
+.navbar ul li a .title {
+    font-size: 1.5rem;
+	position: relative;
+	display: block;
+	padding-left: 60px;
+	height: 60px;
+	line-height: 60px;
+	white-space: normal;
+}
+
+/* .toggle {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	width: 50px;
+	height: 50px;
+	background-color: black;
+	border-radius: 10px;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.toggle.active {
+	background-color: red;
+}
+
+.toggle ion-icon {
+	position: absolute;
+	color: white;
+	font-size: 34px;
+	display: none;
+}
+
+.toggle ion-icon.open,
+.toggle.active ion-icon.close {
+	display: block;
+}
+.toggle ion-icon.close,
+.toggle.active ion-icon.open {
+	display: none;
+} */

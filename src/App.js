@@ -48,6 +48,7 @@ function App() {
   // }, [])
 
   const { data: meals, isLoading, error, getData } = useFetch()
+
   useEffect(() => {
     getData({ url: 'https://react-dummy-server-default-rtdb.firebaseio.com/meals.json' })
   }, [getData])

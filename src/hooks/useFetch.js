@@ -33,6 +33,9 @@ const useFetch = (reqConf) => {
 
     }, [])
 
+    // const postData = async ()=>{
+
+    // }
 
     return { data, isLoading, error, getData }
 

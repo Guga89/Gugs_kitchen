@@ -10,13 +10,13 @@
 }
 
 ::-webkit-scrollbar {
-   width: 2em; 
+   width: 1.7em; 
 }
 
 ::-webkit-scrollbar-track {
    background: white;
    border-radius: 100vw;
-   margin-block: 10em;
+   margin-block: 2em;
    box-shadow: inset 2px 2px 5px 2px lightgray;
 }
 

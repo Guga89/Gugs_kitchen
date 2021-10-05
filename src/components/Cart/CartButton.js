@@ -1,7 +1,7 @@
 import { Fragment, useContext, useEffect, useState } from 'react';
 import { CartContext } from '../../contexts/cart-context';
 import styles from './CartButton.module.css'
-import useIcons from '../UI/Icons'
+import useIcons from '../../hooks/useIcons'
 
 
 const CartButton = (props) => {

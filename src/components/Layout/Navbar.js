@@ -1,5 +1,5 @@
 import Logo from '../../assets/Logo.png'
-import useIcons from "../UI/Icons";
+import useIcons from "../../hooks/useIcons";
 import styles from './Navbar.module.css'
 import NavListItem from "./NavListItem";
 

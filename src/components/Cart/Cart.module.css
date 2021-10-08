@@ -9,7 +9,7 @@
 .cartContainer {
     position: relative;
     width: 100%;
-    max-height: 40%;
+    max-height: 35%;
     background-color: white;
     overflow-y: scroll;
     

@@ -31,10 +31,10 @@
 }
 
 .orderForm {
-    padding: 2em;
+    padding: 1.5em;
     position: absolute;
     top: 100em;    
-    width: 80%;
+    width: 70%;
     background-image: linear-gradient(45deg, orange, white 50%, orange 110%);
     border-radius: 2em; 
     box-sizing: border-box;
@@ -51,6 +51,11 @@
     justify-content: space-evenly;
 }
 
+.namePhone {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 .orderForm label {
     font-size: 1.5rem;
     font-weight: 400;
@@ -64,13 +69,26 @@
     box-shadow: inset 2px 2px 10px 1px lightgray;
     transition: .5s all;
 }
+.invalidInputMessage {
+    color: red;
+    font-weight: bold;
+    padding-left: 1.5em;
+}
 
 input:focus, textarea:focus{
     outline: none;
     transform: scaleX(1.03);
-    border: 2px rgb(216, 112, 8) solid;
+    border: 3px rgb(216, 112, 8) solid;
 }
+/* input:valid, textarea:valid{
+   border: 2px green solid;
+}
+input:invalid, textarea:invalid{
+   border: 2px red solid;
+} */
+
+
 
 .confirm {
-    transform: translateY(-62em);
+    transform: translateY(-66em);
 }

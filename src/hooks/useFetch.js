@@ -33,11 +33,32 @@ const useFetch = (reqConf) => {
 
     }, [])
 
-    // const postData = async ()=>{
+    const postData = useCallback(async function (reqConf) {
 
-    // }
+        try {
+            setIsLoading(true)
 
-    return { data, isLoading, error, getData }
+            const response = await fetch(reqConf.url, {
+                method: reqConf.method ? reqConf.method : 'POST',
+                headers: reqConf.headers ? reqConf.headers : {},
+                body: reqConf.body ? JSON.stringify(reqConf.body) : null
+            });
+
+            if (!response.ok) {
+                throw new Error('Something went wrong! :(')
+            }
+
+            // const dataTransformed = await response.json();
+            // setData(dataTransformed)
+
+        } catch (error) {
+            setError(error)
+        }
+
+        setIsLoading(false)
+
+    }, [])
+    return { data, isLoading, error, getData, postData }
 
 }
 

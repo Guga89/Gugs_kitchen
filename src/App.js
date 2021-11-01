@@ -5,47 +5,12 @@ import CartContextProvider from "./contexts/cart-context";
 import { useEffect } from "react/cjs/react.development";
 import Spinner from "./components/UI/Spinner";
 import useFetch from "./hooks/useFetch";
+import { Redirect, Route, Switch } from "react-router";
+import Home from "./components/pages/Home";
+import TakeAways from "./components/pages/TakeAways";
+import Account from "./components/pages/MyAccount";
 
 function App() {
-  // const [meals, setMeals] = useState([])
-  // const [isLoading, setIsLoading] = useState(false)
-  // const [error, setError] = useState(null)
-
-  // useEffect(() => {
-
-  //   async function getFoods() {
-
-  //     try {
-  //       setIsLoading(true)
-  //       // const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?f=b');
-  //       const response = await fetch('https://react-dummy-server-default-rtdb.firebaseio.com/meals.json');
-
-  //       if (!response.ok) {
-  //         throw new Error('Something went wrong! :(')
-  //       }
-
-  //       const meals = await response.json();
-
-
-  //       // const data = await response.json();
-  //       // const meals = data.meals.map(meal => {
-  //       //   return {
-  //       //     id: meal.idMeal,
-  //       //     name: meal.strMeal,
-  //       //     price: 10,
-  //       //     img: meal.strMealThumb
-  //       //   }
-  //       // })
-  //       setMeals(meals)
-
-  //     } catch (error) {
-  //       setError(error)
-  //     }
-
-  //     setIsLoading(false)
-  //   }
-  //   getFoods()
-  // }, [])
 
   const { data: meals, isLoading, error, getData } = useFetch()
 
@@ -57,10 +22,26 @@ function App() {
     <div className={styles.container}>
       <CartContextProvider>
         <Navbar />
-        {!isLoading && meals.length > 0 && <Content meals={meals} />}
-        {!isLoading && error && <p>{error.message}</p>}
-        {!isLoading && meals.length === 0 && !error && <p>No food to show .... Cook is on leave :(</p>}
-        {isLoading && <Spinner />}
+        <Switch>
+          <Route path="/menu">
+            {!isLoading && meals.length > 0 && <Content meals={meals} />}
+            {!isLoading && error && <p>{error.message}</p>}
+            {!isLoading && meals.length === 0 && !error && <p>No food to show .... Cook is on leave :(</p>}
+            {isLoading && <Spinner />}
+          </Route>
+          <Route path="/take-aways">
+            <TakeAways />
+          </Route>
+          <Route path="/account">
+            <Account />
+          </Route>
+          <Route path="/home">
+            <Home />
+          </Route>
+          <Route path="*" >
+            <Redirect to="/home" />
+          </Route>
+        </Switch>
       </CartContextProvider>
     </div>
   );

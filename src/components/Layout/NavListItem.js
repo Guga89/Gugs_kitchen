@@ -1,26 +1,20 @@
-import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import styles from './NavListItem.module.css'
 
 const NavList = (props) => {
-    const [isActive, setIsActive] = useState(props.navItem.isActive)
 
-    const notActiveItem = styles.list
-    const activeItem = styles.list + ' ' + styles.active
-
-
-    const makeActive = () => {
-        setIsActive(true);
-    }
 
     return (
-        <li className={props.index === 0 || isActive ? activeItem : notActiveItem} onClick={makeActive}>
+
+        <NavLink activeClassName={styles.active} to={props.navItem.link}>
             <b></b>
             <b></b>
-            <a href="#">
+            <div >
                 <span className={styles.icon}>{props.navItem.icon}</span>
                 <span className={styles.title}>{props.navItem.name}</span>
-            </a>
-        </li>
+            </div>
+        </NavLink>
+
     );
 }
 

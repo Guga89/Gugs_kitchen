@@ -1,13 +1,14 @@
-li {
-	list-style: none;
+a {
 	width: 100%;
 	position: relative;
 	border-top-left-radius: 20px;
 	border-bottom-left-radius: 20px;
-    transition: transform .5s
+    transition: transform .5s;
+	text-decoration: none;
+	display: inline-block;
 }
 
-li b:nth-child(1) {
+a b:nth-child(1) {
 	position: absolute;
 	top: -20px;
 	height: 20px;
@@ -15,7 +16,7 @@ li b:nth-child(1) {
 	background-color: white;
 	display: none;
 }
-li b:nth-child(1)::before {
+a b:nth-child(1)::before {
 	content: "";
 	position: absolute;
 	top: 0;
@@ -26,7 +27,7 @@ li b:nth-child(1)::before {
 	background-color: #e48826;
 }
 
-li b:nth-child(2) {
+a b:nth-child(2) {
 	position: absolute;
 	bottom: -20px;
 	height: 20px;
@@ -34,7 +35,7 @@ li b:nth-child(2) {
 	background-color: white;
 	display: none;
 }
-li b:nth-child(2)::before {
+a b:nth-child(2)::before {
 	content: " ";
 	position: absolute;
 	top: 0;
@@ -45,24 +46,24 @@ li b:nth-child(2)::before {
 	background-color: #e48826;
 }
 
-li.active b:nth-child(1),
-li.active b:nth-child(2) {
+a.active b:nth-child(1),
+a.active b:nth-child(2) {
 	display: block;
 }
-li.active {
+a.active {
 	background-color: white;
 }
 
-li.active a {
+a.active div {
 	color: #e48826;
 
 }
-li.active a:hover {
+a.active div:hover {
 	color: #e48826;
 	text-decoration: underline 2px #e48826;
 
 }
-li a {
+a div {
 	text-decoration: none;
 	color: white;
 	position: relative;
@@ -71,14 +72,14 @@ li a {
 	transition: .3s all;
 }
 
-li a:hover {
+a div:hover {
 	transform: scale(1.05);
 	font-weight:bold;
 	text-decoration: underline 3px white ;
 }
 
 
-li a .icon {
+a div .icon {
 	position: relative;
 	display: block;
 	min-width: 60px;
@@ -87,11 +88,11 @@ li a .icon {
 	margin-top: 12px;
 }
 
-li a .icon {
+a div .icon {
 	font-size: 1.5rem;
 }
 
-li a .title {
+a div .title {
     font-size: 1.5rem;
 	position: relative;
 	display: block;

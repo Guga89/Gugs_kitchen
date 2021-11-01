@@ -47,6 +47,7 @@ const useFetch = (reqConf) => {
             if (!response.ok) {
                 throw new Error('Something went wrong! :(')
             }
+            console.log('Order succesfully submitted!')
 
             // const dataTransformed = await response.json();
             // setData(dataTransformed)
@@ -56,6 +57,8 @@ const useFetch = (reqConf) => {
         }
 
         setIsLoading(false)
+        // history.go(-1) //will redirect to the previous page before the creat form
+        // history.push('/')
 
     }, [])
     return { data, isLoading, error, getData, postData }

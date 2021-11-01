@@ -4,6 +4,7 @@ import styles from "./OrderConfirmForm.module.css"
 import { useFormik } from "formik";
 import * as Yup from 'yup'
 import useFetch from "../../hooks/useFetch";
+import Spinner from "./Spinner";
 
 
 const ConfirmForm = (props) => {
@@ -27,7 +28,8 @@ const ConfirmForm = (props) => {
             phone: Yup.number().min(11, 'Must be 11 digits and without +86 country code').required('Required'),
             address: Yup.string().min(30, "Can't leave blank or short information, leave some address info").required('Required'),
             notes: Yup.string().max(50, "Less specific please..."),
-            items: Yup.array().min(1, "Can't make an order without any food in the cart...")
+            items: Yup.array().min(1, "Can't make an order without any food in the cart..."),
+            // createOn: Yup.date().default(function () { return new Date() })
 
         }),
 
@@ -35,42 +37,45 @@ const ConfirmForm = (props) => {
     })
 
     return (
-        <div className={styles.formContainer}>
-            <form onSubmit={formik.handleSubmit} className={props.orderFormStyles} >
+        <>
+            {isLoading && <Spinner />}
+            {!isLoading && <div className={styles.formContainer}>
+                <form onSubmit={formik.handleSubmit} className={props.orderFormStyles} >
 
-                <div>
-                    <label htmlFor="name">Enter your name</label>
-                    <input id='name' name='name' type="text" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.name} placeholder="Please enter your name" required />
-                    {formik.touched.name && formik.errors.name ? (
-                        <div className={styles.invalidInputMessage}>{formik.errors.name}</div>
-                    ) : null}
-                </div>
-                <div>
-                    <label htmlFor="phoneNumber">Enter your phone number</label>
-                    <input id='phoneNumber' name='phone' type="tel" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.phone} minlength='11' maxlength="11" placeholder='Please enter you number exp.12332112332' required />
-                    {formik.touched.phone && formik.errors.phone ? (
-                        <div className={styles.invalidInputMessage}>{formik.errors.phone}</div>
-                    ) : null}
-                </div>
+                    <div>
+                        <label htmlFor="name">Enter your name</label>
+                        <input id='name' name='name' type="text" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.name} placeholder="Please enter your name" required />
+                        {formik.touched.name && formik.errors.name ? (
+                            <div className={styles.invalidInputMessage}>{formik.errors.name}</div>
+                        ) : null}
+                    </div>
+                    <div>
+                        <label htmlFor="phoneNumber">Enter your phone number</label>
+                        <input id='phoneNumber' name='phone' type="tel" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.phone} minlength='11' maxlength="11" placeholder='Please enter you number exp.12332112332' required />
+                        {formik.touched.phone && formik.errors.phone ? (
+                            <div className={styles.invalidInputMessage}>{formik.errors.phone}</div>
+                        ) : null}
+                    </div>
 
-                <div>
-                    <label htmlFor="address">Enter your delivery address</label>
-                    <textarea id='address' address='address' cols="40" rows="1" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.address} placeholder='exp. 12 street, Building 12, room 12' required />
-                    {formik.touched.address && formik.errors.address ? (
-                        <div className={styles.invalidInputMessage}>{formik.errors.address}</div>
-                    ) : null}
-                </div>
-                <div>
-                    <label htmlFor="notes">Notes</label>
-                    <textarea id='notes' notes='notes' cols="20" rows="1" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.notes} placeholder='Notes on your preference... exp. Not spicy, not very salty...' />
-                    {formik.touched.notes && formik.errors.notes ? (
-                        <div className={styles.invalidInputMessage}>{formik.errors.notes}</div>
-                    ) : null}
-                </div>
+                    <div>
+                        <label htmlFor="address">Enter your delivery address</label>
+                        <textarea id='address' address='address' cols="40" rows="1" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.address} placeholder='exp. 12 street, Building 12, room 12' required />
+                        {formik.touched.address && formik.errors.address ? (
+                            <div className={styles.invalidInputMessage}>{formik.errors.address}</div>
+                        ) : null}
+                    </div>
+                    <div>
+                        <label htmlFor="notes">Notes</label>
+                        <textarea id='notes' notes='notes' cols="20" rows="1" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.notes} placeholder='Notes on your preference... exp. Not spicy, not very salty...' />
+                        {formik.touched.notes && formik.errors.notes ? (
+                            <div className={styles.invalidInputMessage}>{formik.errors.notes}</div>
+                        ) : null}
+                    </div>
 
-                <button type="submit" className={styles.orderButton}>Confirm delivery information</button>
-            </form >
-        </div>
+                    <button type="submit" className={styles.orderButton}>Confirm delivery information</button>
+                </form >
+            </div>}
+        </>
     )
 
 

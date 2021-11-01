@@ -6,7 +6,7 @@ import NavListItem from "./NavListItem";
 
 const Navbar = () => {
     const { home, account, menu, takeAway } = useIcons()
-    const navList = [home, account, menu, takeAway]
+    const navList = [home, menu, takeAway, account]
 
 
     return (
@@ -18,6 +18,8 @@ const Navbar = () => {
                     return <NavListItem navItem={item} key={index} index={index} />
                 })}
             </ul>
+
+
         </div>
     );
 }
